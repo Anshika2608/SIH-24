@@ -14,12 +14,25 @@ const login = () => {
   router.replace({ pathname: '/' });
   };
   const handleRegister = () => {
-    // router.replace()
+    if(role === 'Consumer'){
+     router.replace({pathname:'/(Auth)/consumerReg'})
+    }
+    else if(role === 'Contractor'){
+      router.replace({pathname:'/(Auth)/contractorReg'})
+    }
   };
   const hadleLogin = () => {
+  if(role === 'Gram Panchyat'){
+    router.replace({ pathname: '/(Auth)/loginsform',params:{role} });}
+    else if(role === 'Consumer'){
+    router.replace({ pathname: '/(Auth)/consumerLog',params:{role} });}
+    else if(role === 'Contractor'){
+      router.replace({ pathname: '/(Auth)/contractorLog',params:{role} });}
   
-    router.replace({ pathname: '/(Auth)/loginsform',params:{role} });
-  };
+  else if(role === 'Local Technician'){
+    router.replace({ pathname: '/(Auth)/dailyLog',params:{role} });}
+  }
+
   return (
     <View style={styles.container}>
        <Text style={styles.head}  variant="displayMedium">AquaDisha</Text>
@@ -42,8 +55,8 @@ const login = () => {
         <Image source={Wave} style={styles.wave}/>
        </View>
   )
-}
 
+}
 export default login
 const styles = StyleSheet.create({
   container: {

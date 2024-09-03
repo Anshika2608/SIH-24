@@ -7,11 +7,11 @@ const Wave = require('@/assets/images/auth/wave.png')
 import axios from 'axios';
 import { useToast } from "react-native-toast-notifications";
 import { useRoute } from '@react-navigation/native';
-const loginsform = () => {
+const contractorLog = () => {
     const toast = useToast();
     const route = useRoute();
     const [userInfo, setUserInfo] = useState({
-        Gov_id_of_GP: '',
+        Gov_id_of_Contractor: '',
         Password: '',
       });
       const handleInputChange = (name:string, value:any) => {
@@ -19,7 +19,7 @@ const loginsform = () => {
       };
 const handleLogin = async() => {
     try{
-const response = await axios.post('https://login-signup-sih.onrender.com/GP/login',userInfo)
+const response = await axios.post('https://login-signup-sih.onrender.com/Contractor/login',userInfo)
 if(response.status == 200){
     toast.show("You have successfully login"),{
         type:"success",
@@ -50,7 +50,7 @@ else if(response.status == 403){
     
 }
 setUserInfo({
-    Gov_id_of_GP: '',
+    Gov_id_of_Contractor: '',
     Password: '',
 })
 console.log("hii")
@@ -62,8 +62,8 @@ console.log("hii")
     <View style={styles.container}>
     <Text style={styles.head}  variant="displayMedium">AquaDisha</Text>
 <Text style={styles.loginText}>Login</Text>
- <TextInput mode='outlined'placeholder='Government id' outlineColor='#e0e7e5' activeOutlineColor={Colors.bgDark} textColor='black' outlineStyle={styles.outline} style={styles.input} value={userInfo.Gov_id_of_GP}
- onChangeText={(text) => handleInputChange('Gov_id_of_GP', text)}
+ <TextInput mode='outlined'placeholder='Government id' outlineColor='#e0e7e5' activeOutlineColor={Colors.bgDark} textColor='black' outlineStyle={styles.outline} style={styles.input} value={userInfo.Gov_id_of_Contractor}
+ onChangeText={(text) => handleInputChange('Gov_id_of_Contractor', text)}
  />
 
  <TextInput  mode='outlined' placeholder="Password" outlineColor='#e0e7e5' activeOutlineColor={Colors.bgDark} textColor='black' outlineStyle={styles.outline}  style={styles.input} value = {userInfo.Password}
@@ -77,7 +77,7 @@ console.log("hii")
   )
 }
 
-export default loginsform
+export default contractorLog
 
 const styles = StyleSheet.create({
     container: {
