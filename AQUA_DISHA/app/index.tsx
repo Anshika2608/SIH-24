@@ -1,3 +1,24 @@
+// import { View, Text,StyleSheet } from 'react-native'
+// import React from 'react'
+// import { Link } from 'expo-router'
+// const index = () => {
+//   return (
+//    <View>
+//       <Text>Home Screen</Text>
+//       <Link href="/GP">
+//         <Text>Go to Asset </Text>
+//       </Link>
+//     </View>
+//   )
+// }
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   }
+// });
+// export default index
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet,Image,View } from 'react-native';
 import { Button, Card, Text,RadioButton } from 'react-native-paper';
@@ -75,7 +96,7 @@ const router = useRouter()
       <Button buttonColor={Colors.bgDark} textColor="white" icon={arrow} contentStyle={styles.button} style={styles.buttons} onPress={handleButtonClick} disabled={!checked}>Next</Button>
       <Image source={Wave} style={styles.image}/>
     </View>
-  );
+  )
 };
 export default Index;
 const styles = StyleSheet.create({
@@ -143,3 +164,11 @@ buttons:{
 });
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});
+export default index
