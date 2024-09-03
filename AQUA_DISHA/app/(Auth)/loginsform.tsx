@@ -6,10 +6,10 @@ import { useLocalSearchParams } from 'expo-router';
 const Wave = require('@/assets/images/auth/wave.png')
 import axios from 'axios';
 import { useToast } from "react-native-toast-notifications";
-import { useRoute } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 const loginsform = () => {
     const toast = useToast();
-    const route = useRoute();
+    const router = useRouter();
     const [userInfo, setUserInfo] = useState({
         Gov_id_of_GP: '',
         Password: '',
