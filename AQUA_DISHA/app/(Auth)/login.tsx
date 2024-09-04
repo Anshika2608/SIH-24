@@ -14,12 +14,25 @@ const login = () => {
     router.replace({ pathname: '/' });
   };
   const handleRegister = () => {
-    // router.replace()
+    if(role === 'Consumer'){
+     router.replace({pathname:'/(Auth)/consumerReg'})
+    }
+    else if(role === 'Contractor'){
+      router.replace({pathname:'/(Auth)/contractorReg'})
+    }
   };
-  const hadleLogin = () => {
+  const handleLogin = () => {
+  if(role === 'Gram Panchayat'){
+    router.replace({ pathname: '/(Auth)/loginsform',params:{role} });}
+    else if(role === 'Gram Panchyat'){
+    router.replace({ pathname: '/(Auth)/consumerLog',params:{role} });}
+    else if(role === 'Contractor'){
+      router.replace({ pathname: '/(Auth)/contractorLog',params:{role} });}
+  
+  else if(role === 'Local Technician'){
+    router.replace({ pathname: '/(Auth)/dailyLog',params:{role} });}
+  }
 
-    router.replace({ pathname: '/(Auth)/loginsform', params: { role } });
-  };
   return (
     <View style={styles.container}>
       <Text style={styles.head} variant="displayMedium">AquaDisha</Text>
@@ -34,7 +47,7 @@ const login = () => {
         <Image source={person} style={styles.image} />
       </View>
       <Text style={styles.you}>You want to</Text>
-      <Button textColor='white' style={styles.logins} onPress={hadleLogin}>Log in</Button>
+      <Button textColor='white' style={styles.logins} onPress={handleLogin}>Log in</Button>
       {(role === 'Consumer' || role === 'Contractor' || role === "Local Technician") && (
         <Button textColor={Colors.bgDark} mode="outlined" style={styles.register} onPress={handleRegister}>
           Register
@@ -42,8 +55,8 @@ const login = () => {
       <Image source={Wave} style={styles.wave} />
     </View>
   )
-}
 
+}
 export default login
 const styles = StyleSheet.create({
   container: {
