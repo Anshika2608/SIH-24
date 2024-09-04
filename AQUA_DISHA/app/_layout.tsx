@@ -12,6 +12,11 @@ export default function RootLayout() {
     <Stack.Screen name="index" options={{ headerShown:false}}/>
     <Stack.Screen name = "(Auth)/login" options={{ headerShown:false}} />
     <Stack.Screen name = "(Auth)/loginsform" options={{ headerShown:false}} />
+    <Stack.Screen name="GP/(drawer)" options={{ headerShown:false}} />
+    <Stack.Screen name="Consumer/(tab)" options={{ headerShown:false}} />
+    <Stack.Screen name="Consumer/raiseComplain" options={{ headerShown:false}} />
+
+
     </Stack>
     </PaperProvider>
     </ToastProvider>

@@ -2,14 +2,14 @@ import React,{useState} from 'react'
 import {Text,Button, TextInput} from 'react-native-paper'
 import { ScrollView, StyleSheet,Image,View } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams,useRouter } from 'expo-router';
 const Wave = require('@/assets/images/auth/wave.png')
 import axios from 'axios';
 import { useToast } from "react-native-toast-notifications";
-import { useRoute } from '@react-navigation/native';
+const router = useRouter();
+
 const loginsform = () => {
     const toast = useToast();
-    const route = useRoute();
     const [userInfo, setUserInfo] = useState({
         Gov_id_of_GP: '',
         Password: '',
@@ -28,6 +28,7 @@ if(response.status == 200){
         offset:30,
         animationType:"slide-in"
       }
+      router.replace('/GP/(drawer)'); 
 }
 else if(response.status == 403){
     toast.show("Invalid Credential"),{
