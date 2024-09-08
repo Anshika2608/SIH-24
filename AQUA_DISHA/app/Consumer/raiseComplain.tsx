@@ -23,6 +23,7 @@ export default function raiseComplain() {
     const { colors } = useTheme();
 
     const handleSubmit = async () => {
+        console.log("byy")
         const formData = new FormData();
         formData.append('description', complainData.description);
         formData.append('locality', complainData.locality);

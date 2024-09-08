@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React from 'react'
-import { useFocusEffect } from 'expo-router'
-import { useEffect, useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native';
+import { useEffect, useState,useCallback } from 'react'
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import Ionicons from '@expo/vector-icons/Ionicons'
 import axios from 'axios';
@@ -15,31 +15,55 @@ const index = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [complaintsData, setComplaintsData] = useState([])
-    // const[complaintProgress,setComplaintProgress]=useState(0)
-    useEffect(() => {
+    
+    // useEffect(() => {
+    //     const fetchComplaints = async () => {
+    //         try {
+    //             const response = await axios.get('https://sih-backend-fmce.onrender.com/complaint/getComplaints');
+    //             console.log('API Response:', response.data);
+    //             setComplaintsData(response.data.complaints);
+    //             if (Array.isArray(response.data.complaints)) {
+    //                 setComplaintsCount(response.data.complaints.length);
+    //                 // setComplaintProgress(complaintsCount / 2);
+    //             } else {
+    //                 console.warn('Unexpected response structure:', response.data);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //             setError("Failed to fetch complaints");
+    //             toast.show('Failed to fetch complaints', { type: 'danger' });
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
+
         const fetchComplaints = async () => {
             try {
                 const response = await axios.get('https://sih-backend-fmce.onrender.com/complaint/getComplaints');
                 console.log('API Response:', response.data);
-                setComplaintsData(response.data.complaints);
                 if (Array.isArray(response.data.complaints)) {
-                    setComplaintsCount(response.data.complaints.length);
-                    // setComplaintProgress(complaintsCount / 2);
+                    const totalComplaints = response.data.complaints.length;
+                    setComplaintsData(response.data.complaints);
+                    setComplaintsCount(totalComplaints);
+                    // setComplaintProgress(totalComplaints / 2);
                 } else {
                     console.warn('Unexpected response structure:', response.data);
+                    setError('Unexpected response structure.');
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
-                setError("Failed to fetch complaints");
+                setError('Failed to fetch complaints.');
                 toast.show('Failed to fetch complaints', { type: 'danger' });
             } finally {
                 setLoading(false);
             }
         };
-
-       
+        useFocusEffect(
+            useCallback(() => {
                 fetchComplaints();
             }, [])
+        );
+          
         
 
     if (loading) {
@@ -52,6 +76,9 @@ const index = () => {
     const handleRaiseComplain=()=>{
         router.push({pathname:"Consumer/raiseComplain"})
     }
+
+    const totalComplaints = complaintsData.length;
+    const halfComplaintsCount = Math.ceil(totalComplaints / 2);
     return (
         <ScrollView style={styles.text}>
             <Text style={styles.header}>
@@ -72,14 +99,14 @@ const index = () => {
                 <View style={styles.innercard}>
                     <View style={styles.leftCard}>
                         <Text style={styles.leftText}>Solved Complains</Text>
-                        <Text style={styles.leftText1}>9</Text>
+                        <Text style={styles.leftText1}>{halfComplaintsCount}</Text>
                     </View>
                     <Image source={require('../../../assets/images/group10.png')} style={styles.image} />
                 </View>
                 <View style={styles.innercard}>
                     <View style={styles.leftCard}>
                         <Text style={styles.leftText}>Complains in progress</Text>
-                        <Text style={styles.leftText1}>6</Text>
+                        <Text style={styles.leftText1}>{halfComplaintsCount}</Text>
                     </View>
                     <Image source={require('../../../assets/images/group11.png')} style={styles.image} />
 

@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet,Image,View } from 'react-native';
 import { Button, Card, Text,RadioButton } from 'react-native-paper';
@@ -44,7 +42,7 @@ const router = useRouter()
 
   return (
     <View style={styles.container}>
-     <Link href="/Consumer">Go to Consumer</Link>
+     {/* <Link href="/Consumer">Go to Consumer</Link> */}
       <Text style={styles.head}  variant="displayMedium">AquaDisha</Text>
       <Text style={styles.head2} variant={'titleLarge'}>Continue as</Text>
    

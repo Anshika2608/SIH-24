@@ -3,33 +3,32 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigationState } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 interface CustomDrawerItemProps {
-    label: string;
-    routeName: string;
-    onPress: () => void;
-  }
-  const CustomDrawerItem: React.FC<CustomDrawerItemProps> = ({ label, routeName, onPress }) => {  // Get the current route name
+  label: string;
+  routeName: string;
+  onPress: () => void;
+}
+const CustomDrawerItem: React.FC<CustomDrawerItemProps> = ({ label, routeName, onPress }) => {  
   const currentRoute = useNavigationState(state => state.routes[state.index]?.name);
-  // Determine if the current route matches the routeName prop
   const isActive = currentRoute === routeName;
 
   return (
-   
-        <TouchableOpacity
+
+    <TouchableOpacity
       onPress={onPress}
       style={[styles.item, isActive && styles.activeItem]}
     >
-   
+
 
       <Text style={[styles.label, isActive && styles.activeLabel]}>
         {label}
       </Text>
     </TouchableOpacity>
-    
+
   );
 };
 
 const styles = StyleSheet.create({
-   
+
   item: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     color: '#000',
-    fontWeight:'600',
+    fontWeight: '600',
 
   },
   activeItem: {

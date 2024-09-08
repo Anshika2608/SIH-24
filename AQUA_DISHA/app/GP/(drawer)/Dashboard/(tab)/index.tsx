@@ -2,32 +2,30 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Dimensions, ScrollView } from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 
-// Get screen width for responsive chart width
 const screenWidth = Dimensions.get('window').width;
 
-// Define chart configuration
 const chartConfig = {
   backgroundColor: '#e26a00',
   backgroundGradientFrom: '#fff',
   backgroundGradientTo: '#fff',
-  decimalPlaces: 2, // optional, decimal places for data values
-  color: (opacity = 1) => `rgba(0, 177, 159, ${opacity})`, // Color of the bars
+  decimalPlaces: 2, 
+  color: (opacity = 1) => `rgba(0, 177, 159, ${opacity})`, 
   labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   style: {
     borderRadius: 16,
-    paddingRight: 16, // Ensure there is space for labels
+    paddingRight: 16, 
   },
   propsForBackgroundLines: {
     strokeDasharray: '', 
     strokeWidth: 0,     
-    stroke: 'transparent', // Hide horizontal lines
+    stroke: 'transparent',
   },
   propsForLabels: {
     fontSize: 12,
     color: '#000',
   },
   propsForBars: {
-    color: (opacity = 1) => `rgba(0, 177, 159, ${opacity})`, // Full bar color
+    color: (opacity = 1) => `rgba(0, 177, 159, ${opacity})`, 
   },
 };
 

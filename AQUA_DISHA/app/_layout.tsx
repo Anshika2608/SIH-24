@@ -15,8 +15,6 @@ export default function RootLayout() {
     <Stack.Screen name="GP/(drawer)" options={{ headerShown:false}} />
     <Stack.Screen name="Consumer/(tab)" options={{ headerShown:false}} />
     <Stack.Screen name="Consumer/raiseComplain" options={{ headerShown:false}} />
-
-
     <Stack.Screen name = "(Auth)/consumerReg" options={{ headerShown:false}} />
     <Stack.Screen name = "(Auth)/contractorReg" options={{ headerShown:false}} />
     <Stack.Screen name = "(Auth)/consumerLog" options ={{ headerShown:false}} />

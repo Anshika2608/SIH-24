@@ -2,14 +2,16 @@ import React,{useState} from 'react'
 import {Text,Button, TextInput} from 'react-native-paper'
 import { ScrollView, StyleSheet,Image,View } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams,useRouter } from 'expo-router';
 const Wave = require('@/assets/images/auth/wave.png')
 import axios from 'axios';
 import { useToast } from "react-native-toast-notifications";
 import { useRoute } from '@react-navigation/native';
+// import { useRouter } from '@react-navigation/native';
+
 const consumerLog = () => {
     const toast = useToast();
-    const route = useRoute();
+    const route = useRouter();
     const [userInfo, setUserInfo] = useState({
         Gov_id_of_Consumer: '',
         Password: '',
@@ -28,7 +30,10 @@ if(response.status == 200){
         offset:30,
         animationType:"slide-in"
       }
+      route.replace('/Consumer/(tab)'); 
+ 
 }
+
 else if(response.status == 403){
     toast.show("Invalid Credential"),{
         type:"failure",
@@ -63,7 +68,7 @@ console.log("hii")
     <Text style={styles.head}  variant="displayMedium">AquaDisha</Text>
 <Text style={styles.loginText}>Login</Text>
  <TextInput mode='outlined'placeholder='Government id' outlineColor='#e0e7e5' activeOutlineColor={Colors.bgDark} textColor='black' outlineStyle={styles.outline} style={styles.input} value={userInfo.Gov_id_of_Consumer}
- onChangeText={(text) => handleInputChange('Gov_id_of_GP', text)}
+ onChangeText={(text) => handleInputChange('Gov_id_of_Consumer', text)}
  />
 
  <TextInput  mode='outlined' placeholder="Password" outlineColor='#e0e7e5' activeOutlineColor={Colors.bgDark} textColor='black' outlineStyle={styles.outline}  style={styles.input} value = {userInfo.Password}

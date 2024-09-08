@@ -24,7 +24,7 @@ const login = () => {
   const handleLogin = () => {
   if(role === 'Gram Panchayat'){
     router.replace({ pathname: '/(Auth)/loginsform',params:{role} });}
-    else if(role === 'Gram Panchyat'){
+    else if(role === 'Consumer'){
     router.replace({ pathname: '/(Auth)/consumerLog',params:{role} });}
     else if(role === 'Contractor'){
       router.replace({ pathname: '/(Auth)/contractorLog',params:{role} });}
